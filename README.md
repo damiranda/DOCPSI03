@@ -9,7 +9,7 @@ Clases
 
 ## Clases
 
--  [Clase 2](https://damiranda.github.io/DOCPSI03/clases/clase1.html)
+-  [Clase 1](https://damiranda.github.io/DOCPSI03/presentación/clase1.html)
 
 
 

@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Estadística Básica</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Daniel Miranda" />
+    <meta name="date" content="2024-01-01" />
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <link href="libs/animate.css-3.7.2/animate.xaringan.css" rel="stylesheet" />
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="animate.min.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: title-slide, middle, center
+
+background-image: url(img/mide_logo_2019.png), url(img/ku_leuven_logo.svg)
+background-position: top left, top right
+background-size: 20%, 20%
+
+
+
+&lt;br&gt;
+
+.line_space_07[
+## Curso de Análisis Estadístico 2024
+### .text_70[Introducción]
+]
+&lt;br&gt;
+
+.text_100[Daniel Miranda, PhD.] .text_80[danmiranda@uchile.cl]
+
+.text_100[Kevin Carrasco, MSc.] 
+
+
+&lt;br&gt;
+
+
+
+
+---
+# Presentación
+
+.pull-left[
+
+Daniel Miranda
+
+&lt;img src="img/DMF.jpg" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+Kevin Carrasco
+
+&lt;img src="img/Kevin.webp" width="60%" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+class: center, middle, inverse
+
+# Preámbulo
+
+---
+class: animated animate__rubberBand
+#  Identifique el o los errores
+
+&lt;img src="img/drogas.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+#  Identifique el o los errores
+
+&lt;img src="img/femin.jfif" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Identifique el o los errores
+
+&lt;img src="img/error.jfif" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+#  Identifique el o los errores
+
+&lt;img src="img/errorbar.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Estamos rodeados de aplicaciones estadísticas en...
+
+- Psicología
+
+- Sociología
+
+- Ciencia Política
+
+- Economía
+
+- Salud Publica: *la pandemia ha relevado su importancia*
+
+---
+class: center, middle, inverse
+
+# `\(\bar{X} = \frac{\sum_{i = 1}^{n} x_i}{N}\)`
+
+---
+class: center, middle, inverse
+#  Objetivo del curso
+
+- Conocer y aplicar las principales técnicas de análisis estadísticos
+
+
+---
+#  Objetivos Específicos 
+
+  + Comprender conceptual y operacionalmente los conceptos procedentes de la estadística descriptiva.
+
+  + Reconocer los contextos en que es pertinente –y en los que no- el uso de la estadística descriptiva.
+
+  + Conocer y aplicar herramientas de tabulación y representación gráfica de datos.
+  
+  + Comprender conceptual y operacionalmente medidas de tendencia central (media, mediana, moda) y dispersión (varianza, desviación estándar, rango, rango intercuartil).
+
+  + Comprender los fundamentos y propósitos de estadística inferencial
+
+
+---
+#  Contenidos 
+
+Estadísticas, medición y escalas
+-	¿Qué es la estadística?
+-	La teoría de medición de S.S. Stevens
+-	Tipos de variables y escalas de medición.
+
+Estadística Descriptiva I
+-	Distribución de frecuencia de variables
+-	Descripción visual de datos y estadísticos univariados 
+-	Tablas y gráficos para cruce de dos o más variables
+
+Estadística Descriptiva II
+-	Medidas de posición: percentiles.
+-	Medidas de tendencia central: media, mediana y moda.
+-	Medidas de dispersión: desviación estándar y varianza.
+-	Medidas de posición: cuartiles, deciles, quintiles, percentiles. 
+
+---
+#  Contenidos 
+
+Construcción de tablas y gráficos
+-	Representación tabulada de datos
+-	Representación gráfica de datos
+
+Análisis de datos
+-	Inferencia estadística
+-	Distribución de probabilidades (normal estándar)
+-	Análisis de medidas y toma de decisiones. 
+
+
+---
+#  Metodologías de enseñanza-aprendizaje que se emplearán en este curso
+
++ Metodologías a utilizar en sala de clases: 
+
+  - Clases expositivas
+  
+  - Ejercicios pråcticos
+ 
+  
+---
+#  Estructura básica 
+
++ Clases expositivas con ejemplos y actividades
+
+
++ Evaluaciones
+
+  - Ejercicio práctico al final del curso
+
+---
+#  Aspectos prácticos 
+
+- Todas las clases serán ejecutadas por dos profesores
+
+- Todas las clases y material del curso se subirán al sitio web del curso (distribuidas por mail).
+
+**¿Consultas?**
+
+
+---
+class: center, middle, inverse
+
+#  Y partimos!! 
+
+---
+#  Múltiples fenómenos
+
++ Funcionamiento psicológico: percepción, actitudes, conocimientos, creencias, comportamientos, etc.
+	+ Procesos de interacción: relaciones sociales, familiares, etc.
+	
+	+ Relación con el mundo: la vida política, la vida en las organizaciones, la vida en comunidad.
+	
+	+ Pobreza, desigualdad y sus correlatos psicosociales
+	
+  + Información en organizaciones: Clima, información financiera, proyecciones, etc.
+
+  + Entre otros muchos temas...
+
+
+---
+#  Múltiples fenómenos: ¿qué es y cómo se mide?
+
+&lt;img src="img/pobreza_casen.webp" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+#  Múltiples fenómenos: ¿qué es y cómo se mide?
+
+&lt;img src="img/pobreza2color.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+#  Dimensión Ética en Estadística 
+
+- Uso para investigación!
+
+- Uso para evaluar y tomar decisiones en múltiples ámbitos .. Por ejemplo
+
+  - Políticas Públicas
+
+  - Organizaciones laborales
+
+  - Diagnósticos y tratamientos psicológicos y médicos
+
+  - Temas de seguridad nacional, Etc.
+
+- Estándares y rigurosidad.
+
+---
+#  De constructos a variables en una base de datos 
+
++ La investigación, usualmente, se centra usualmente en definir variables de interés.
+
++ Usando una perspectiva cuantitativa podemos describir, resumir y modelar el comportamiento de esas variables.
+
++ Entonces para realizar investigación cuantitativa es necesario **cuantificar** los fenómenos
+	
++ Esto es parte del proceso de operacionalización
+	
++ El análisis utiliza **relaciones matemáticas** entre las variables
+
+---
+#  Variables en la Investigación 
+
++ **¿Qué es una variable?**
+
+  - Al hacer una investigación buscamos estudiar ciertas características de un fenómeno de interés.
+  
+  - En la perspectiva cuantitativa, estudiar una variable implica, de alguna forma, poder medir su comportamiento (lo que conocemos como OPERACIONALIZAR la variable).
+  
+  - Una VARIABLE es una característica que al ser medida en distintas circunstancias (contextos,  personas) asume distintos valores.
+  
+  - Si una característica no asume distintos valores dentro de la medición, hablamos de una CONSTANTE .
+
+---
+#  Base de Datos 
+
+- Una **BASE DE DATOS** es un conjunto de datos referentes a un determinado contexto (un grupo de personas, instituciones, fenómeno), ordenadas de modo que permitan su análisis.
+
+- En estadística, una base de datos define una serie de **VARIABLES**, las que se identifican por nombres distintos.
+
+- Para cada variable se cuenta con una serie de **VALORES**, que corresponden a la forma en que cada variable se presenta en cada uno de los casos evaluados.
+
+- Usualmente las bases de datos se presentan en forma de planillas, ubicando en las **COLUMNAS** (verticales) las variables y en las **FILAS** (horizontales) los valores o casos.
+
+
+---
+# Medición en ciencias sociales
+
+¿Qué queremos medir?
+
+– Definición de un constructo
+
+
+¿Cómo lo medimos?
+
+- Operacionalización
+
+- Diseño de itemes
+
+- Espacio de respuestas
+
+
+¿Qué nos indica la medición?
+
+– Modelo de análisis de respuestas
+
+
+---
+# Medición en ciencias sociales
+
+Medición: la acción de asignar números o símbolos a características de acuerdo a ciertas reglas (Stevens, 1946)
+
+Reglas: guías para representar la magnitud o características del objeto medido
+
+Medición en psicología o educación (psicometría): asignación de números a características psicológicas
+
+---
+# Medición en ciencias sociales
+
+&lt;img src="img/b5.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Medición en ciencias sociales
+
+&lt;img src="img/big_five.png" width="70%" style="display: block; margin: auto;" /&gt;
+---
+# Básicamente
+
+Variable: cualquier cosa o propiedad que varía
+
+Constante: no presenta variación
+
+- Pueden ser visibles / no visibles, latentes
+
+
+Variables discretas
+
+- Rango finito de valores
+
+• Dicotómicas
+
+• Politómicas
+
+
+Variables continuas:
+
+– Rango infinitos de valores
+
+---
+#  Niveles de Medición 
+
++ Un aspecto muy importante a considerar es el nivel de medición asignado a las variables incorporadas en el estudio.
+
++ El nivel de medición de una variable indica la propiedad numérica que esa variable puede tener (y por lo tanto los códigos usados para sus valores).
+
+Regla:
+Aceptar sólo como relaciones válidas entre los números aquellas que tengan sentido considerando el fenómeno estudiado
+
+---
+#  Habría 4 Niveles de Medición 
+
++ Nominal: Los números solo identifican distintas modalidades de las variables.
+
++ Ordinal: Además de identificar distintas modalidades, los números establecen una jerarquía entre las modalidades de las variables (alguna son mayores que otras, pero sin una separación estable entre un nivel y el siguiente
+
++ Intervalar : Además de identificar y ordenar los valores de la variable, establece intervalos entre los valores que son siempre los mismos.  Esto permite realizar operaciones aritméticas (suma-resta) entre valores de las variables.
+
++ Razón: Además de todas las propiedades anteriores, se asigna un cero absoluto (no arbitrario).  Esto permite establecer relaciones de proporcionalidad entre los valores de las variables.
+
+---
+#  Niveles de medición 
+
++ Nominal
+	+ Igualdad o desigualdad
+
++ Ordinal
+	+ Orden o jerarquía
+
++ Intervalar
+	+ Magnitud constante
+
++ Razón
+	+ Valor cero no es arbitrario
+	
+
+---
+# Escalas nominales
+
+– Del latin nomen (nombre)
+
+– Los números son empleados como “etiquetas” para identificar características
+
+– Fines analíticos: la asignación de números en lugar de los nombres facilita luego operaciones de análisis cuantitativo
+
+– Propiedad de los números: identidad
+
+  + Todos los miembros de una misma categoría deben ser asignados al mismo número
+
+  + Distintas categorías no pueden utilizar el mismo número
+
+---
+# Escalas ordinales
+
+- Los elementos de distintas categorías pueden ser ordenados en una serie de menos a más (o viceversa)
+
+- Dice información sobre la posición, no sobre la distancia entre los individuos
+
+- Resultados reportados usualmente como rangos de percentil, y asociaciones con otras escalas con el coeficiente de correlación de Spearman
+
+- Característicos de la medición psicológica, principalmente social y de personalidad
+
+---
+# Escalas intervalares
+
+- Escalas de unidades iguales (equal-unit scales)
+
+- Las diferencias entre dos números consecutivos reflejan la diferencia empírica o demostrable entre los objetos representados
+
+- No existe un cero absoluto
+
+---
+# Escalas de razón
+
+- Propiedad sumativa
+
+- Punto cero absoluto (ej. Número de clientes)
+
+- Resultados pueden ser expresados como una proporción
+
+- Características de las ciencias naturales
+
+- En psicología se utilizan principalmente al contar frecuencias de eventos o intervalos de tiempo
+
+---
+#  Niveles de medición 
+
++ Nominal (género, carrera )
+
+	+ Igualdad o desigualdad (= y `\(\neq\)`)
+	
++ Ordinal ( NSE, nivel educacional )
+
+	+ Orden o jerarquía (&gt; y &lt;)
+	
++ Intervalar ( actitudes, personalidad )
+
+	+ Magnitud constante (+ y -)
+	
++ Razón ( monto de una donación )
+
+	+ Valorcero no es arbitrario (x o `\(/\)`)
+
+---
+#  Niveles de medición 
+
+
+&lt;table class="table" style="font-size: 18px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Escala &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Nominal &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Ordinal &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Intervalar &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Razón &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Operación  empírica &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Determinación de igualdad &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Determinación de más o menos &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Determinación de igualdad de intervalos &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Determinación de igualdad de razones &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Estadísticos permisibles &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Cuenta Moda &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Mediana - Percentil &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Promedio Desv. Estand. &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Coeficientes de variación &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+#  Niveles de medición 
+
++ ¿A qué niveles de medición corresponden las siguientes variables?
+
+  + NSE alto, NSE medio, NSE bajo
+  
+	+ Santiago, Providencia, Recoleta, Antofagasta
+	
+	+ 350, 400, 500, 600, 750, 820 (Puntos de SIMCE)
+	
+	+ Nada feliz, Algo feliz, Muy feliz
+
+---
+#  Niveles de medición 
+
++ Siempre tenemos que considerar a qué nivel corresponde el constructo  que queremos medir.
+
+	+ Por ejemplo, si bien es posible medir estado de ánimo a un nivel nominal, u ordinal, una medición a nivel intervalar es más adecuada.
+	
+	+ Por lo tanto, esta decisión es teórica . Depende de la definición teórica del constructo.
+	
+	+ Conocer los niveles de medición permite saber qué tipos de análisis podemos realizar con los datos.
+	
+---
+# Tipos de datos en relación a escalas de medición:
+
+Datos categóricos: pueden ser medidos sólo mediante escalas nominales, u ordinales en caso de orden de rango
+
+
+Datos continuos:
+
+- Medidos en escalas intervalares o de razón
+
+- Pueden ser transformados a datos categóricos
+
+---
+class: center, middle, inverse
+
+#  Estadística descriptiva e inferencial 
+
+---
+#  Estadística descriptiva e inferencial 
+
++ La estadística es un lenguaje para comunicar información basada en datos cuantitativos.
+
++ La estadística descriptiva sirve para sintetizar o resumir los datos obtenidos a partir de un conjunto de observaciones
+
++ La estadística inferencial utiliza la información de la estadística descriptiva para realizar procesos que permiten, dentro de ciertos rangos de confianza, determinar el comportamiento de la población que es representada por la muestra
+
+---
+#  Estadística descriptiva 
+
++ Indicadores que describen distintos aspectos de las observaciones realizadas.
+
+	+ Tremendamente importantes para explorar y presentar los resultados de un estudio (describe el comportamiento de una muestra)
+	
+	+ Son los indicadores sobre los cuales se realiza estadística inferencial (se infiere a la población)
+	
+
+---
+class: middle, center
+#  Estadística descriptiva: veamos algunos ejemplos 
+
+---
+class: middle, center
+
+&lt;img src="img/apa_demo.png" width="35%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle, center 
+
+&lt;img src="img/apa_corr.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle, center
+
+&lt;img src="img/image1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, middle, center
+
+&lt;img src="img/enacoes.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle, center
+
+&lt;img src="img/peso.jfif" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center
+
+&lt;img src="img/brexit.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: inverse, center, middle
+#  Tabulación y Graficación 
+
+
+---
+#  Tabulación y Graficación 
+
+ - Los análisis estadísticos son estrategias para traducir la información obtenida a un formato que sea interpretable.
+ 
+ - Por mucho que miremos una base de datos, difícilmente vamos a poder entender qué significan esos números.
+ 
+ - La estrategia más sencilla es mostrar la información en un formato visual (gráficos) o en un esquema sintetizado (tablas)
+
+
+---
+#  Tablas y gráficos 
+
++ En general, cualquier tabla puede ser presentada en formato gráfico.
+
+	+ ¿Qué elegir?
+	
+	+ La decisión depende de la cantidad de información presentada y el uso que vaya a darse a ella.
+	
+	+ Los gráficos permiten una comprensión global más inmediata, las tablas una revisión más detallada.
+
+---
+class: middle, center
+
+#  Tabulando la información
+
+
+---
+#  Tablas de síntesis de resultados 
+
+ - Al reportar los resultados de una investigación, es común construir tablas que resumen el comportamiento de una serie de variables.
+
+ - La idea general es condensar la mayor cantidad de información evitando la redundancia de información.
+ 
+ - Estas  tablas se diseñan a partir de distintos análisis realizados sobre los datos pero que apuntan a un área temática común, como por ejemplo, la descripción demográfica de la muestra.
+
+
+---
+#  Tablas de frecuencia 
+
+- La forma más sencilla de presentar la información obtenida en un estudio es contabilizar el número de veces que aparece cada respuesta.
+
+- Este indicador se conoce como la frecuencia de aparición da cada respuesta.  En símbolos  `\(f\)`
+
+- Cuando presentamos una variable indicando la frecuencia de aparición de cada uno de sus valores, tenemos una tabla de frecuencia .
+
+
+---
+#  Tablas de frecuencia 
+
+- Las frecuencias son, sin embargo, datos absolutos.  No es fácil comparar los resultados de dos tablas con un N total de respuestas diferente.
+
+- Para hacer esas comparaciones, se utilizan medidas estandarizadas, esto es, transformaciones de los puntajes originales a escalas que sean las mismas en todas las tablas (y que permiten la comparación)
+
+
+---
+#  Tabulación de datos 
+
+Estandarizan los puntajes, permitiendo su comparación
+  - Proporción (p)
+  
+  - Porcentaje (%)
+  
+Permiten analizar el comportamiento de la variable
+
+  - Frecuencias Acumuladas
+  
+  - Porcentajes Acumulados
+
+
+---
+#  Medidas estandarizadas 
+
+- Proporción
+
+$$p = \frac{f}{N} $$
+
+`\(p\)` = proporción
+`\(f\)` = número de casos
+N = número total de observaciones
+
+
+
+- Porcentaje
+
+$$ \% = p \times 100 $$
+
+`\(\%\)` = porcentaje
+
+
+---
+#  Estandarizando la frecuencia
+
+$$ Proporción(p):  p = \frac{f}{N} $$
+
+  - `\(f\)` = 	n° de casos favorables
+    
+  - N   =	  n° total de observaciones
+
+
+- Una proporción es una relación entre dos magnitudes. En **Estadística Descriptiva** usualmente se usa como indicador de proporción la razón (división) que existe entre la frecuencia de aparición de un valor de una variable(f) y el total de casos (N). Por este motivo se la conoce también como *frecuencia relativa*.
+
+- Propiedades:
+
+  - Varía entre 0 y 1
+  
+  - La suma de las proporciones de los valores de una tabla da siempre 1
+  
+  - Es un óndice de la probabilidad de aparición de los valores de las variables.
+
+---
+#  Estandarizando la frecuencia 
+
+$$ Porcentaje(\%):  \% = p \times 100 $$
+  - `\(p = proporción\)`
+
+- El porcentaje nos indica cuántos casos de cada 100 presentan un determinado atributo (valor) de una variable. Nos entrega la misma información que la proporción, pero en un formato más amigable.
+
+- Como lleva todo a una escala de 0 a 100 suele ser poco apropiado en muestras muy pequeñas, ya que suele dar una idea sobrevalorada de la importancia del atributo evaluado
+
+- Propiedades:
+
+  - Varía entre 0 y 100
+  - La suma de las proporciones de los valores de una tabla da siempre 100
+  - Puede usarse como óndice de la probabilidad de aparición de los valores de las variables.
+  - Como lleva todo a una escala de 0 a 100 suele ser poco apropiado en muestras muy pequeñas, ya que suele dar una idea sobrevalorada de la importancia del atributo evaluado
+
+---
+#  Tablas de frecuencia y datos acumulados 
+
+Grado de Felicidad personas evaluadas
+
+&lt;table class="table" style="font-size: 18px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Puntaje &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; f &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; F &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; p &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; % &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; % Ac &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Muy poco feliz &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 10.31 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 10.31 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Poco feliz &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 398 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 558 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.26 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 25.64 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 35.95 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Relativamente feliz &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 610 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1168 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.39 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 39.30 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 75.26 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Bastante feliz &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 310 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1478 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.20 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 19.97 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 95.23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Muy feliz &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 74 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1552 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0.05 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 4.77 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 100 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Total &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1552 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.00 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 100.0% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+#  Datos acumulados 
+
+- Los datos acumulados nos indican, para cada valor de una variable, el monto o la proporción o porcentaje de casos que hay "hasta" ese valor.
+
+- Requiere que los datos tengan al menos un nivel de medición ordinal.
+
+- En la tabla siguiente, por ejemplo, podemos decir que "hasta relativamente feliz" se declaran 1168 personas, que equivalen al 75.26% de los casos evaluados.
+
+- En base a esto podemos decir que en una muestra clínica como la nuestra `\(3 / 4\)` de las personas evaluadas reportan niveles de felicidad medios o bajos
+---
+#  Tablas de frecuencia 
+
+¿La democracia es preferible a cualquier otra forma de gobierno?
+(1, "completamente en desacuerdo"; a 7, "completamente de acuerdo")
+
+&lt;table class="table" style="font-size: 18px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Puntaje &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; f &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; % &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; % asc &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; % des &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 99 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 5.0% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 5.0% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 100.0% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 44 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.2% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 7.2% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 95.0% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 94 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 4.7% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 11.9% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 92.8% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 212 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 10.7% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 22.6% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 88.1% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 231 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 11.6% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 34.2% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 77.4% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 415 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20.9% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 55.1% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 65.8% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 893 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 44.9% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 100.0% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 44.9% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Total &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1988 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 100.0% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 100.0% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 100.0% &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+#  Normas APA para tablas 
+
+.pull_left[
+&lt;img src="img/anova.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull_right[ .small[
+Las tablas pueden presentar tanto datos cuantitativos como texto. El formato recomendado para tablas es el siguiente:
+
+- Los números de las Tablas son arábigos, alineado a la izquierda, sin cursivas, por encima de la tabla.
+- Las tablas deberían ser numeradas en el orden en que son mencionadas en el texto
+ -El título de la tabla debe aparecer debajo del número de la tabla, alineado a la izquierda, cursiva, en mayúsculas y minúsculas, doble espaciado
+- Los títulos deben ser breves y claros
+- Los encabezados de las columnas usan mayúsculas solo en la primera letra de la primera palabra.
+- Solo usar líneas horizontales, no verticales.
+- Las notas de las tablas se indican bajo la tabla en tamaño más pequeño, con la palabra Nota:
+- Las notas específicas son indicadas por letras en superóndice
+- Tablas extremadamente detalladas deben ser presentadas en los apéndices
+]
+]
+
+
+---
+class: middle, center
+
+#  Gráficando la información
+
+
+---
+#  Graficación
+
+&lt;img src="img/graphs.png" width="70%" style="display: block; margin: auto;" /&gt;
+
++ Hay ciertas normas formales que están construidas para facilitarle la vida al lector
+
++ Los gráficos y tablas deben ser comprensibles sin leer el texto; el texto también debe ser comprensible sin ver las figuras y debe hacer referencia a ellas cuando corresponda.
+	
++ gráficos y tablas deben ser numerados y tener un título descriptivo.
+
+---
+#  Múltiples formas de mostrar lo mismo 
+
+&lt;img src="img/Visualizing.jpeg" width="40%" style="display: block; margin: auto;" /&gt;
+
+
+---
+#  Normas APA para figuras 
+
+.pull_left[
+&lt;img src="img/apa_graphs.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull_right[ .small[
+
+En el estilo de la APA de cualquier tipo de ilustración que no es una tabla (gráficos, cuadros, dibujos, mapas y fotografas) se llama la figura. Las buenas figuras, deben ser simples y claras.
+
+
+- Los números de la figura son arábigos, alineado a la izquierda, en cursiva, por debajo de la figura.
+- El título de la figura escrito al lado del número. Solo use mayúsculas en la primera palabra y en los nombres propios
+- Las etiquetas de los ejes usan mayúsculas en las palabras importantes y una tipografía san serif (por ejemplo, Arial, Helvética).
+- Las etiquetas del eje vertical se alinean verticalmente.
+- Las Leyendas están contenidas dentro de los bordes del gráfico.
+- El punto cero se coloca en la ordenada (eje y).
+- Líneas y puntos deben ser claros y nítidos.
+- Las barras usan rellenos distintos para discriminarlos fácilmente
+- Deben especificarse las unidades de medida usadas.
+]
+]
+
+---
+#  Gráfico de torta 
+
+- Para variables nominales
+
+- No permite usar muchas categorías (por congestión visual)
+
+&lt;img src="img/torta.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle, center
+
+&lt;img src="img/ccivico_1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle, center
+
+&lt;img src="img/intpol.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle, center
+
+&lt;img src="img/manif.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle, center
+
+&lt;img src="img/parti.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+
+---
+#  Variables Discretas (nominales, ordinales)
+
+- No incluye todos los valores dentro de un rango, tiene un conjunto limitado de valores posibles.
+
+- Por ejemplo, una pregunta likert de 1 a 5, o la cantidad de hermanos que tiene un participante.
+
+&lt;img src="img/bar.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Variables Continuas (intervalo o razón)
+
+- Incluye todos los valores posibles dentro de un rango. Esto no es comón en ciencias sociales, pero en la práctica cuando tenemos una gran cantidad de valores posibles es mejor tratarlos como continuos.
+
+- Por ejemplo, el promedio de varias pregunta likert de 1 a 5, tiempos de reacción, puntaje en una prueba
+
+&lt;img src="img/histograma.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Datos acumulados
+
+Al hacer una tabla de frecuencia de una variable continua surge un problema:
+
+&lt;img src="img/frec.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+#  Generación de intervalos 
+
++ Sirven para evaluar la Distribución de una variable continua.
+
+  + Las variables pueden ser discretas (cantidad de risas) o continuas (proporción de tiempo riendo). En la práctica, si hay muchos valores posibles (ej. 100) es mejor considerarla como continua.
+
++ Recodifican la variable continua para que tenga menos valores posibles.
+
++ Hay que construir suficientes intervalos para poder aproximar una curva; pero no muchos, o vamos a tener el mismo problema que en la tabla de frecuencia.
+
+---
+#  Histograma 
+
++ Gráfico de una tabla de intervalos
+
++ Ideal para visualizar la Distribución de la variable continua
+	
+&lt;img src="img/hist.png" width="40%" style="display: block; margin: auto;" /&gt;
+
+---
+# Gráfico de barras vs histograma
+
+&lt;img src="img/bar_hist.jpg" width="80%" style="display: block; margin: auto;" /&gt;
+
+.text_50[
+&gt;**Note:** https://www.storytellingwithdata.com/blog/2021/1/28/histograms-and-bar-charts .
+  ]
+---
+#  Modelos estadísticos: simplificando el mundo 
+
++ Las tablas de frecuencia (y sus gráficos) incluyen toda la información en la base de datos.
+
++ Los histogramas pierden información, pero es una pérdida útil ya que permiten entender el fenómeno de mejor manera.
+
++ En general esto se aplica para todos los indicadores estadísticos.
+
+
+---
+class: middle, center 
+
+#  Pero existen muchos otros gráficos o figuras mas complejos!! 
+
+---
+class: middle, center 
+
+&lt;img src="img/protest.gif" width="60%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle, center 
+
+&lt;img src="img/occupy.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle, center 
+
+&lt;img src="img/change.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: middle, center 
+
+&lt;img src="img/gap.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle, center 
+
+&lt;img src="img/trend_protest1.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: middle, center 
+
+&lt;img src="img/VAP.jpg" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, 
+# Ahora, algunos ejercicios
+
+- Ejercicio de tabulación de datos
+
+
+---
+# Datos 
+
+Los datos contienen información de 100 personas acerca de su edad y sexo (como se ve en la imagen).
+
+&lt;img src="img/f1.png" width="20%" style="display: block; margin: auto;" /&gt;
+
+---
+# Instrucciones 
+
+Para el desarrollo de estos ejercicios, se provee un archivo excel con cuatro hojas (datos, frecuencia_edad(5), frecuencia_sexo, frecuencia_edad(10))
+
+Mientras que las primeras hojas funcionan como ejemplo, la de frecuencia_edad(10) debe ser desarrollada una revisados los ejemplos. 
+
+
+---
+# Análisis de frecuencia del la edad
+
+Para el análisis de frecuencia de edad se usa la hoja *frecuencia_edad (5)*, que contiene la edad agrupada en rangos de 5 años.
+
+&lt;img src="img/f2.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Frecuencia de la edad
+
+Para simplificar el análisis de frecuencias de la edad, primero se deben definir los rangos que serán analizados.
+
+En este caso, la columna A define rangos de 5 en 5, inciando en 20 años hasta llegar a los 70 o más años. 
+
+A partir de ahí se comienza con el uso de funciones que permiten hacer el conteo.
+
+
+
+---
+# Frecuencia de la edad
+
+Función ***FRECUENCIA()*: esta permite contar la frecuencia de aparición de cierto rango de valores. Específicamente, al definir un valor máximo (p.e. 20) cuenta las apariciones hasta ese valor para cada fila. 
+
+&lt;img src="img/f3.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+De la hoja de datos se define las celdas a contar y de la hoja actual las celdas que sirven de guía para contar los rangos específicos. Por ejemplo, la fila 2 cuenta personas de hasta 20 años, la fila 3 cuenta personas entre 21 y 25 años, la fila 4 cuenta personas entre 26 y 30 años, y así sucesivamente.
+
+---
+# Frecuencia de la edad
+
+La frecuencia acumulada es una suma de las celdas inmediatamente anteriores + la celda actual.
+
+&lt;img src="img/f5.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Frecuencia de la edad
+
+La proporción es el $$ Proporción(p):  p = \frac{f}{N} $$
+
+&lt;img src="img/f6.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Frecuencia de la edad
+
+La proporción acumulada es una suma de las celdas inmediatamente anteriores + la celda actual.
+
+
+&lt;img src="img/f7.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Frecuencia de la edad
+
+El procentaje es $$ Porcentaje(\%):  \% = p \times 100 $$
+
+&lt;img src="img/f8.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Frecuencia de la edad
+
+El % acumulado ascendente es una suma de las celdas inmediatamente anteriores + la celda actual.
+
+&lt;img src="img/f9.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Frecuencia de la edad
+
+El % acumulado descendente es una suma de las celdas inmediatamente posteriores + la celda actual.
+
+&lt;img src="img/f10.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Entonces, ¿qué se puede decir de este análisis?
+
+&lt;img src="img/f2.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+- Entre los 20 y 45 años se encuentra un 54% de las personas.
+- Sólo un 26% tiene más de 51 años. 
+- Los valores más frecuentes se encuentran entre los 35 y los 55 años.
+- Hay muy pocas personas menores de 30 y muy pocas personas mayores de 56.
+
+---
+# Frecuencia del sexo
+
+&lt;img src="img/f11.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+# Ejercicio
+
+Complete el análisis de frecuencia de la edad en rangos de 10 años. 
+
+
+&lt;img src="img/f12.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: title-slide, middle, center
+
+background-image: url(img/mide_logo_2019.png), url(img/ku_leuven_logo.svg)
+background-position: top left, top right
+background-size: 20%, 20%
+
+
+
+&lt;br&gt;
+
+.line_space_07[
+## Curso de Análisis Estadístico 2024
+### .text_70[Introducción]
+]
+&lt;br&gt;
+
+.text_100[Daniel Miranda, PhD.] .text_80[danmiranda@uchile.cl]
+
+.text_100[Kevin Carrasco, MSc.] 
+
+
+&lt;br&gt;
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"slideNumberFormat": "%current%",
+"countIncrementalSlides": true,
+"ratio": "16:9",
+"navigation": {
+"scroll": true
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
