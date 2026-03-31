@@ -10,7 +10,8 @@ Clases
 ## Clases
 
 -  [Clase 1](https://damiranda.github.io/DOCPSI03/clases/presentación/clase1.html)
--  [Clase 1](https://damiranda.github.io/DOCPSI03/clases/clase2.pdf)
+-  [Clase 2](https://damiranda.github.io/DOCPSI03/clases/clase2.pdf)
+-  [Clase 3 Intro a R](https://damiranda.github.io/DOCPSI03/clases/intro_R.pdf)
 
 
 
