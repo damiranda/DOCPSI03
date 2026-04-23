@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Democracia, ciudadan\IeC {\'\i }a y escuela}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Rol de la escuela}{4}{0}{1}
+\beamer@sectionintoc {2}{Formaci\IeC {\'o}n Ciudadana en Chile}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Antecedentes}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Plan de Formaci\IeC {\'o}n Ciudadana 2016}{14}{0}{2}
+\beamer@sectionintoc {3}{Modelo(s) de democracia}{20}{0}{3}
+\beamer@sectionintoc {4}{Modelo(s) de ciudadan\IeC {\'\i }a}{22}{0}{4}
+\beamer@subsectionintoc {4}{1}{\IeC {\textquestiondown }Crisis o nuevas ciudadan\IeC {\'\i }as?}{22}{0}{4}
+\beamer@subsectionintoc {4}{2}{Modelos posibles}{31}{0}{4}
+\beamer@sectionintoc {5}{Estudios Nacionales e Internacionales}{36}{0}{5}
