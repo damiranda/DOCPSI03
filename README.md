@@ -14,10 +14,9 @@ Clases
 -  [Clase 3 Intro a R](https://damiranda.github.io/DOCPSI03/clases/intro_R.pdf)
 -  [Clase 4](https://damiranda.github.io/DOCPSI03/clases/clase4.pdf)
 -  [Clase 5](https://damiranda.github.io/DOCPSI03/clases/clase5.pdf)
+-  [Clase 6](https://damiranda.github.io/DOCPSI03/clases/clase6_AnovaI.pdf)
 
 
-- [Agenda](https://damiranda.github.io/DOCPSI03/clases/agenda/agenda.html)
-- [Agendapdf](https://damiranda.github.io/DOCPSI03/clases/agenda/agenda.pdf)
 
 
 
