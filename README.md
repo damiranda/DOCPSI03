@@ -15,6 +15,7 @@ Clases
 -  [Clase 4](https://damiranda.github.io/DOCPSI03/clases/clase4.pdf)
 -  [Clase 5](https://damiranda.github.io/DOCPSI03/clases/clase5.pdf)
 -  [Clase 6](https://damiranda.github.io/DOCPSI03/clases/clase6_AnovaI.pdf)
+-  [Clase 7](https://damiranda.github.io/DOCPSI03/clases/clase6_AnovaII.pdf)
 
 
 
