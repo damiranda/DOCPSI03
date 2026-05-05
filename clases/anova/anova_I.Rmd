@@ -1,7 +1,7 @@
 ---
 title: "Anova"
 author: "Daniel Miranda"
-date: "2025"
+date: "2026"
 output:
   html_document: default
   pdf_document: 
@@ -24,6 +24,8 @@ library(dplyr)
 library(rempsyc)
 library(flextable)
 library(rio)
+library(gridExtra)
+library(lsr)
 #install.packages("flextable")
 #install.packages("multcompView")
 #install.packages("rempsyc")
@@ -465,7 +467,7 @@ summary(anova)
 ```
 ```{r}
 #install.packages("lsr")
-library(lsr)
+
 etaSquared(anova)
 plot(anova)
 ```
