@@ -1,0 +1,314 @@
+---
+title: "Práctica: Regresión Múltiple"
+author: "Daniel Miranda"
+format: html
+editor: visual
+---
+
+# Equipo Docente
+
+-   Profesor: Daniel Miranda (danmiranda\@uchile.cl)
+-   Apoyo Docente: Felipe Varas
+
+# Introducción
+
+Este documento resume las actividades para el análisis de regresión. Comienza con el análisis de confiabilidad de un indicador que luego se utiliza en un modelo de regresión.
+
+## Instalar o instalar librerías útiles para la sesión
+
+```{r, message=FALSE, warning=FALSE}
+#install.packages(c("splitstackshape","psych"))
+library(readr)
+library(splitstackshape)
+library(psych)
+library(summarytools)
+library(skimr)
+library(ggplot2)
+library(dplyr)
+library(kableExtra)
+library(table1)
+library(modest)
+library(BSDA)
+library(crosstable)
+library(gmodels)
+library(corrplot)
+library(sjPlot)
+library(stargazer)
+library(rio)
+library(performance)
+library(see)
+library(interactions)
+```
+
+## Lectura de datos
+
+Para nuestro análisis de datos se generó una base que evalúa multiples actitudes. Las c05_01 a la c05_08 se orientan a evaluar el grado de confianza en instituciones (por ejemplo: confianza en el Gobierno, Los Partidos Políticos, El Parlamento, etc.).
+
+```{r, message=FALSE, warning=FALSE}
+
+base= rio::import("https://www.dropbox.com/scl/fi/wo7rvoz0lw9wkx65boen8/ELSOC_W01_subset.csv?rlkey=kox9y3ie7n61dj26hidg91o56&dl=1")
+names(base)
+```
+
+## Vista previa de la de datos
+
+Los siguientes códigos permiten explorar los datos de manera general.
+
+```{r}
+# Vista previa de los datos
+View(base)
+
+# Mostrar los nombres de las variables contenidas en la base datos
+names(base)
+
+# Muestra el número de filas y columnas (casos y variables)
+dim(base)
+
+# Muestra los primeros 10 casos de la base para todas las variables
+head(base, 10)
+
+# Muestra los primeros 10 casos de la base para una variable específica
+head(base$c01, 10)
+
+```
+
+Otra forma de describir los datos rápidamente es usando la librería `summarytools`. Esta genera información para cada variable.
+
+```{r , results='asis'}
+print(summarytools::dfSummary(base, method = "render")) ## Descripción de la base de datos
+
+```
+
+\newpage
+
+# Confiabilidad como consistencia interna
+
+La confiabilidad/precisión apunta al nivel de incertidumbre que está asociado con las mediciones que son generadas por un instrumento de medición.
+
+Si bien es solo una de muchas formas de calcular un coeficiente de confiabilidad el alfa de Cronbach es muy usado en la psicología. Este es probablemente el indicador estadístico más solicitado, más reportado en psicología.
+
+Se lo considera una medida de consistencia interna.
+
+-   Aumenta cuando la inter-correlación entre los ítems aumenta. Por lo tanto aumenta cuando todos los ítems miden el mismo constructo.
+
+-   Indirectamente indica el grado en que un conjunto de ítems mide un constructo unidimensional simple.
+
+Guías de interpretación:
+
+-   $≥ .90 : Excelente$
+
+-   $0.7 a 0.9: Bueno$
+
+-   $0.6 a 0.7: Aceptable$
+
+-   $0.5 a 0.6: Pobre$
+
+-   $< 0.5: Muy Pobre$
+
+### Descripción de la asociación entre indicadores de Confianza
+
+Matriz de correlaciones
+
+```{r  echo=TRUE, results='markup'}
+## Seleccionamos las variables a analizar
+conf=base%>%
+  dplyr::select(c05_01, c05_02, c05_03, c05_04, c05_05, c05_06, c05_07, c05_08)
+
+tab_corr(conf)
+```
+
+Gráfico de correlaciones
+
+```{r  echo=FALSE}
+M <-cor(conf, use = "complete.obs")
+
+corrplot(M, type="upper", order="hclust")
+
+```
+
+Aquí vemos que todos los ítemes considerados presentan correlaciones: positivas, pequeñas o medianas y estadísticamente significativas.
+
+### Estimación de Alfa de Cronbach.
+
+```{r}
+tab_itemscale(conf)
+```
+
+¿Qué te muestra esta tabla?
+
+-   Puedes ver qué ítemes incluiste a través de *Row*
+
+-   Puedes ver con qué frecuencia falta casos a través de *Missing*
+
+-   Puede ver estadísticas descriptivas de los ítemes mediante *Mean, SD y Skew*
+
+-   Puede ver cuán útiles son los ítemes para medir el concepto latente de Confianza en Instituciones a través de la dificultad del ítem, la discriminación del íteme y *alpha de Cronbach* si se elimina el ítem.
+
+Aquí, nos centraremos en la discriminación y los valores del *alpha de Cronbach*:
+
+-   Compruebe si los valores de Discriminación están por encima de .2. Esto indica el grado en que un ítem nos ayuda a discriminar entre participantes que obtuvieron puntuaciones muy bajas o altas en confianza.
+
+-   Comprobar si el *alpha de Cronbach* es superior a 0,7. Cuanto más alto, mejor. Si en el *alpha de Cronbach* los valores aumentan bruscamente tan pronto como uno de los elementos no se considera para el análisis (es decir, "eliminado" según la tabla), esto indica que podemos considerar no usarlo para índice.
+
+-   Aquí, parece que todos los ítems discriminan bien (todos los valores de Discriminación de Ítems son suficientemente altos) y que, juntos, forman un índice con validez satisfactoria, ya que *alpha de Cronbach* para los ocho ítems es de un 0.806.
+
+-   Si hubiera algún indicador que muestra un *alpha si el item es eliminado* mejor que el observado, entonces sugiere que ese ítem podría ser eliminado. Por ejemplo, si algún ítem presenta un *alpha si el item es eliminado* de 0.85, entonces se sugeriría eliminar ese ítem. Por lo tanto, la escala quedaría compuesta por 7 ítemes en vez de ocho.
+
+### Conclusión acerca de la escala de Confianza.
+
+Podemos utilizar los cinco elementos de Confianza para crear un índice medio llamado Confianza_institucional(conf_inst). Creamos este índice como el promedio de las 8 variables consideradas en el *alfa de Cronbach*. La justificación de hacer esto es que el *alfa de Cronbach* es bueno.
+
+```{r}
+base <- base %>%
+  dplyr::mutate(conf_inst= (c05_01 + c05_02 + c05_03 + c05_04 + c05_05  + c05_06 + c05_07 + c05_08)/8)
+
+## Revisar la variable agregada
+#print(summarytools::dfSummary(base, method = "render")) ## Descripción de la base de datos
+names(base)
+
+hist(base$conf_inst)
+
+skim(base$conf_inst)
+```
+
+# Regresión
+
+La Regresión Lineal sirve para predecir una variable, sabiendo cómo se comporta la otra.
+
+Esto lo hace a partir de la recta de regresión, en torno a la cual, se ajustan los datos con las distancias cuadráticas mínimas.
+
+Esta recta (línea) de regresión representa la mejor solución estimada para predecir los datos (variable dependiente) a partir de las variables independiente: línea o recta con el mejor ajuste.
+
+El análisis de Regresión lineal nos entrega también una ecuación de regresión, una fórmula, que describe a la recta o línea de regresión. Esta ecuación de regresión se basa en la ecuación de la recta: \$ Y= \alpha + \beta x + \epsilon\_i\$.
+
+Donde: - $𝑌$ es la variable dependiente
+
+-   $𝑥$ son las variables independientes
+
+-   $\epsilon_̇i$ es el error asociado a la estimación de$Y$ (error de estimación individual)
+
+-   El parámetro $\alpha$ (también conocimcido como $\beta_0$) es el intercepto (Valor de $Y$ cuando los $X = 0$).
+
+-   $\beta_1$ refiere a la pendiente estimada. Que indican cuanto cambia, en promedio, $Y$ ante el cambio de una unidad de $X$ (considerando todas las otras $X$ del modelo como constantes, *Seteris Paribus*, cuando hay otros predictores).
+
+*Seteris Paribus* se usa como expresión cuando se interpretan las pendientes en un modelo de regresión múltiple. Significa, mantendiendo el resto constante o controlando por las otras variables.
+
+En este ejemplo, usaremos en indicador de confianza en instituciones recién creado, como variable dependiente. Para explicar los niveles de confianza, nos preguntamos: ¿en qué medida la confianza en instituciones es explicada por el grado de interés en la política, los niveles de conversación sobre política y por el nivel educacional.
+
+Para responder esta pregunta se realiza un análisis de regresión, utilizando las siguientes variables independientes disponibles:
+
+-   Interés en política (c13): varía de 1 a 5, donde 5 indica mayor interés.
+
+-   Conversación sobre política (c14_01): varía de 1 a 5, donde 5 indica mayor frecuencia de conversación.
+
+-   Nivel educacional (m01): varía de 1 a 10, donde mayores puntajes indican mayor nivel educacional.
+
+### Matriz de correlaciones
+
+El análisis de correlaciones permite explorar la asocación entre variables. En este caso, se estima una matriz de correlaciones que muestras las asociaciones lineales entre las las variables de interés.
+
+```{r}
+#names(base)
+
+# Preparar la base: crear nombres y guardar variables de interés
+reg=base%>%
+  mutate(Interés= c13) %>%
+  mutate(Conversación= c14_01) %>%
+  mutate(Educación= m01) %>%
+  mutate(Confianza= conf_inst) %>%
+  dplyr::select(Confianza, Interés, Conversación, Educación)
+
+ 
+skim(reg) 
+
+# Matriz de correlaciones
+tab_corr(reg)
+```
+
+Se puede ver que la correlación entre interés político con confianza es positiva (r=0.305, p\<0.01), mediana y estadíticamente significativa. Así mismo, las correlaciones de conversación política (r= 0.169, p\<0.01) y Educación (r= 0.139, p\<0.01) con confianza política son positivas, pequeñas y estadísticamente significativas.
+
+### Regresión simple
+
+Primero, estimaremos un modelo de regresión utilizando la variable de Interés político para predecir Confianza en Instituciones.
+
+```{r, results='asis'}
+simple= lm(Confianza ~ Interés, data=reg)
+summary(simple)
+stargazer(simple, type="latex")
+```
+
+#### Interpretación del ajuste del modelo
+
+-   El ajuste del modelo se analiza a partir del test de ANOVA del modelo. El resultado muestra que el modelo explica mejor que los residuos ($F_{(1,2679)}= 273.2; p<0.001$). Por lo tanto, podemos interpretar los coeficientes.
+
+-   El coeficiente de determinación ($R^2$) y el coeficiente de determinación ajustado ($R^2 ajustado$) muestran que el modelo explica un 9,2% y un 9,2% de la varianza, respectivamente.
+
+#### Interpretación de los coeficientes
+
+-   El intercepto $\alpha$ ó $\beta_0$ muestra que, cuando el interés en política es 0, la confianza política esperada es de $\beta_0 = 1.70$.
+
+-   La pendiente $\beta_1$ muestra que, por cada punto que aumenta el interés en política, la confianza política aumenta en $0.184$ ($p<0.01$) puntos. Este efecto es estadísticamente significativo.
+
+-   Usando la ecuación de la recta podemos predecir valores esperados. Por ejemplo, ¿qué niveles de confianza política tendría una persona con el mayor nivel de interés en política (es decir, $x=5$ puntos de interés).
+
+    -   $\hat{Y}= \beta_0 + \beta_1 x$
+
+    -   $\hat{Y}= 1.70 + (0.184*5)$
+
+    -   $\hat{Y}= 2.62$
+
+Entonces, el nivel de confianza política esperada para una persona con el mayor nivel de interés en política ($x=5$) es de 2.62 puntos.
+
+### Regresión múltiple
+
+Ahora, estimaremos un modelo de regresión múltiple utilizando las tres variable independientes para predecir Confianza en Instituciones.
+
+```{r, results='asis'}
+multiple= lm(Confianza ~ Interés + Conversación + Educación, data=reg)
+#summary(multiple)
+stargazer(multiple, type="text")
+
+```
+
+#### Interpretación del ajuste del modelo
+
+-   El ajuste del modelo se analiza a partir del test de ANOVA del modelo. El resultado muestra que el modelo explica mejor que los residuos ($F_{(3,2673)}= 93.2; p<0.001$). Por lo tanto, podemos interpretar los coeficientes.
+
+-   El coeficiente de determinación ($R^2$) y el coeficiente de determinación ajustado ($R^2 ajustado$) muestran que el modelo explica un 9,4% y un 9,3% de la varianza, respectivamente.
+
+#### Interpretación de los coeficientes
+
+-   El intercepto $\alpha$ ó $\beta_0$ muestra que, cuando las variables independientes son 0, la confianza política esperada es de $\beta_0 = 1.66$.
+
+-   La pendiente $\beta_1$ muestra un efecto estadísticamente significativo ($p<0.01$), *Seteris Paribus*. Manteniendo contantes las otras variables en el modelo, por cada punto que aumenta el interés en política, la confianza política aumenta en $0.184$ puntos.
+
+-   La pendiente $\beta_2$ NO muestra un efecto estadísticamente significativo ($p=0.337$). Por lo tanto, el coeficiente de conversación política no se interpreta, por que no predice confianza.
+
+-   La pendiente $\beta_3$ muestra un efecto estadísticamente significativo ($p<0.01$), *Seteris Paribus*. Manteniendo contantes las otras variables en el modelo, por cada punto que aumenta la educación, la confianza política aumenta en $0.014$ puntos.
+
+-   Usando la ecuación de la recta podemos predecir valores esperados. Por ejemplo, ¿qué niveles de confianza política tendría una persona con el mayor nivel de interés en política ($x_1=5$) y el mayor nivel educacional ($x_3=10$).
+
+    -   $\hat{Y}= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3$
+
+    -   $\hat{Y}= 1.66 + (0.184*5) + (0.014*10)$, recodar que $\beta_2$ no se interpreta.
+
+    -   $\hat{Y}= 2.72$
+
+Entonces, el nivel de confianza política esperada para una persona con el mayor nivel de interés en política ($x_1=5$) y el mayor nivel educacional ($x_3=10$) es de 2.72. puntos.
+
+### Chequeo de supuestos
+
+```{r, results='asis'}
+performance::check_model(simple)
+
+performance::check_model(multiple)
+```
+
+### Interacción
+```{r, results='asis', warning=FALSE}
+inte= lm(Confianza ~ Interés + Educación + Conversación, data=reg)
+inter= lm(Confianza ~ Interés*Educación + Conversación , data=reg)
+#summary(multiple)
+stargazer(inte, inter, type="text")
+
+```
