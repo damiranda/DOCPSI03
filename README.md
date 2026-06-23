@@ -19,6 +19,8 @@ Clases
 -  [anova](https://damiranda.github.io/DOCPSI03/clases/anova/anova_I.html)
 -  [Clase 8](https://damiranda.github.io/DOCPSI03/clases/clase8_cov_corr_reg.pdf)
 -  [Clase 9](https://damiranda.github.io/DOCPSI03/clases/clase9regmult/clase9reg.html)
+-  [Clase 10](https://damiranda.github.io/DOCPSI03/clases/clase9regmult/Clase10.pdf)
+-  [Clase 11](https://damiranda.github.io/DOCPSI03/clases/clase9regmult/clase11.pdf)
 
 
 
