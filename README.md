@@ -22,7 +22,7 @@ Clases
 -  [Clase 10](https://damiranda.github.io/DOCPSI03/clases/Clase10.pdf)
 -  [Clase 11](https://damiranda.github.io/DOCPSI03/clases/clase11.pdf)
 -  [Clase 12](https://damiranda.github.io/DOCPSI03/clases/clase12.pdf)
--  [Práctica EFA CONFIABILIDAD](https://damiranda.github.io/DOCPSI03/clases/practica_EFA)
+-  [Práctica EFA CONFIABILIDAD](https://damiranda.github.io/DOCPSI03/clases/practica_EFA/practica_efa_conf.html)
 
 
 
